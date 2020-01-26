@@ -1,15 +1,15 @@
 const fs = require('fs');
 
 const filename = process.argv[2];
-const charset = process.argv[3] ? process.argv[3] : 'utf-8';
+const encoding = process.argv[3] ? process.argv[3] : 'utf-8';
 
 let text = '';
-fs.readFile(filename, charset, (e, rawData) => {
+fs.readFile(filename, encoding, (e, rawData) => {
     if (e) {
         throw e;
     }
 
-    text = rawData.toString(charset);
+    text = rawData.toString(encoding);
 
     const textLines = text.split("\n");
 
