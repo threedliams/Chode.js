@@ -1,0 +1,24 @@
+{
+  "name": "@threedliams/chode.js",
+  "version": "0.0.2",
+  "description": "A simple javascript linter that ensures your files are wider than they are long",
+  "main": "chode.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/threedliams/Chode.js.git"
+  },
+  "keywords": [
+    "chode",
+    "lint",
+    "linter"
+  ],
+  "author": "Ramsey Opp <ramsey.opp@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/threedliams/Chode.js/issues"
+  },
+  "homepage": "https://github.com/threedliams/Chode.js#readme"
+}
