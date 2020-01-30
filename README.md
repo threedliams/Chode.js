@@ -1,7 +1,8 @@
+![chode.js logo](chodejs.png)
 # Chode.js
-A simple javascript linter that ensures your files are wider than they are long
+A simple, lightweight javascript linter that ensures your files are wider than they are long
 
 ### Usage
 ```
-node chode.js [filename] [character encoding (optional)]
+node chode.js [file or folder name] [character encoding (optional)]
 ```
