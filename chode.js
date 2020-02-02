@@ -1,7 +1,11 @@
 const fs = require('fs');
+const chodeignoreParser = require('./chodeIgnoreParser');
 
-const path = process.argv[2];
-const encoding = process.argv[3] ? process.argv[3] : 'utf-8';
+const path = process.argv[2] ? process.argv[2] : '.';
+const chodeignoreFilePath = process.argv[3] ? process.argv[3] : '.chodeignore';
+const encoding = process.argv[4] ? process.argv[4] : 'utf-8';
+
+let chodeignoreRules = chodeignoreParser.parseChodeignore(chodeignoreFilePath);
 
 let problemFiles = [];
 
@@ -26,8 +30,11 @@ if (isValid) {
 }
 
 function recurseFileTree(path) {
-    let isValid = true;
+    if (chodeignoreRules.includes(path)) {
+        return true;
+    }
 
+    let isValid = true;
     if (fs.lstatSync(path).isDirectory()) {
         fs.readdirSync(path).forEach(subPath => {
             isValid = isValid & recurseFileTree(path + '/' + subPath);
