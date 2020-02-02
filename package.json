@@ -1,6 +1,6 @@
 {
   "name": "@threedliams/chode.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple javascript linter that ensures your files are wider than they are long",
   "main": "chode.js",
   "scripts": {
