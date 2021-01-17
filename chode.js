@@ -1,7 +1,7 @@
 const fs = require('fs');
-const chodeignoreParser = require('./chodeIgnoreParser');
-const chodeArgumentParser = require('./chodeArgumentParser');
-const chodeLogger = require('./chodeLogger');
+const chodeignoreParser = require('./src/chodeIgnoreParser');
+const chodeArgumentParser = require('./src/chodeArgumentParser');
+const chodeLogger = require('./src/chodeLogger');
 
 const {rootDirectory, chodeignoreFilePath, encoding, verbose,} = chodeArgumentParser.parseCommandLineArguments(process.argv);
 
