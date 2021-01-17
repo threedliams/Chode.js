@@ -1,9 +1,8 @@
 const fs = require('fs');
 const chodeignoreParser = require('./chodeIgnoreParser');
+const chodeArgumentParser = require('./chodeArgumentParser');
 
-const rootDirectory = process.argv[2] ? process.argv[2] : '.';
-const chodeignoreFilePath = process.argv[3] ? process.argv[3] : '.chodeignore';
-const encoding = process.argv[4] ? process.argv[4] : 'utf-8';
+const {rootDirectory, chodeignoreFilePath, encoding,} = chodeArgumentParser.parseCommandLineArguments(process.argv);
 
 let chodeignoreRules = chodeignoreParser.parseChodeignore(chodeignoreFilePath);
 
