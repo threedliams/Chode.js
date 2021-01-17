@@ -3,11 +3,13 @@ module.exports = {
         const rootDirectory = findArg(arguments, 'directory', 'd', '.');
         const chodeignoreFilePath = findArg(arguments, 'chodeignore', 'c', '.chodeignore');
         const encoding = findArg(arguments, 'encoding', 'e', 'utf-8');
+        const verbose = isArgPresent(arguments, 'verbose', 'v')
 
         return {
             rootDirectory,
             chodeignoreFilePath,
             encoding,
+            verbose,
         };
     }
 }
@@ -24,4 +26,8 @@ function findArg(arguments, keyword, keyletter, defaultValue) {
     }
 
     return arguments[index + 1];
+}
+
+function isArgPresent(arguments, keyword, keyletter) {
+    return arguments.indexOf('--' + keyword) !== -1 || arguments.indexOf('-' + keyletter) !== -1;
 }

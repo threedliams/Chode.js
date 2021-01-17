@@ -1,8 +1,9 @@
 const fs = require('fs');
 const chodeignoreParser = require('./chodeIgnoreParser');
 const chodeArgumentParser = require('./chodeArgumentParser');
+const chodeLogger = require('./chodeLogger');
 
-const {rootDirectory, chodeignoreFilePath, encoding,} = chodeArgumentParser.parseCommandLineArguments(process.argv);
+const {rootDirectory, chodeignoreFilePath, encoding, verbose,} = chodeArgumentParser.parseCommandLineArguments(process.argv);
 
 let chodeignoreRules = chodeignoreParser.parseChodeignore(chodeignoreFilePath);
 
@@ -15,15 +16,15 @@ if (fs.lstatSync(rootDirectory).isDirectory()) {
     isValid = analyzeFile(rootDirectory)
 }
 
-console.log();
+chodeLogger.log();
 if (isValid) {
-    console.log('\x1b[32mOverall status: Valid!\x1b[0m');
+    chodeLogger.logGreen('Overall status: Valid!');
     process.exit(0);
 } else {
-    console.log('\x1b[31mOverall status: Rejected.\x1b[0m');
-    console.log('\x1b[31mProblem files:\x1b[0m');
+    chodeLogger.logRed('Overall status: Rejected.');
+    chodeLogger.logRed('Problem files:');
     problemFiles.forEach(problemFile => {
-        console.log('\x1b[31m' + problemFile + '\x1b[0m');
+        chodeLogger.logRed(problemFile);
     });
     process.exit(1);
 }
@@ -57,15 +58,15 @@ function analyzeFile(filename) {
         }
     });
 
-    console.log(filename + ":");
-    console.log(textLines.length + " lines long.");
-    console.log(maxLineLength + " columns wide.");
+    chodeLogger.log(filename + ":", verbose);
+    chodeLogger.log(textLines.length + " lines long.", verbose);
+    chodeLogger.log(maxLineLength + " columns wide.", verbose);
 
     if (maxLineLength > textLines.length) {
-        console.log('\x1b[32mChode.js approved!\x1b[0m');
+        chodeLogger.log('\x1b[32mChode.js approved!\x1b[0m', verbose);
         return true;
     }
-    console.log('\x1b[31mRejected - too long.\x1b[0m');
+    chodeLogger.log('\x1b[31mRejected - too long.\x1b[0m', verbose);
     problemFiles.push(filename);
     return false;
 }
