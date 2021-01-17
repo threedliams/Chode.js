@@ -1,13 +1,7 @@
 module.exports = {
     log: chodeLog,
-
-    logGreen: function(message = '', verbose = true) {
-        chodeLog(message, verbose, '\x1b[32m');
-    },
-
-    logRed: function(message = '', verbose = true) {
-        chodeLog(message, verbose, '\x1b[31m');
-    },
+    logGreen,
+    logRed,
 }
 
 function chodeLog(message = '', verbose = true, colorByte = '') {
@@ -20,4 +14,12 @@ function chodeLog(message = '', verbose = true, colorByte = '') {
     }
 
     console.log(message);
+}
+
+function logGreen(message = '', verbose = true) {
+    chodeLog(message, verbose, '\x1b[32m');
+}
+
+function logRed(message = '', verbose = true) {
+    chodeLog(message, verbose, '\x1b[31m');
 }
