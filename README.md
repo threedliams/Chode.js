@@ -2,7 +2,7 @@
 # Chode.js
 A simple, lightweight javascript linter that ensures your files are wider than they are long
 
-Read more at chodejs.com.
+Read more at [chodejs.com](https://www.chodejs.com).
 
 ### Usage
 #### Basic
